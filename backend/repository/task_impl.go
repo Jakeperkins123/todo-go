@@ -41,38 +41,37 @@ func (t *TaskRepoImpl) ReadAllTasks() ([]models.Task, error) {
 		tasks = append(tasks, task)
 	}
 
-    if err := rows.Err(); err != nil {
-        return nil, err
-    }
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
 
 	return tasks, nil
 }
 
-func (t *TaskRepoImpl) ReadTaskByID(id uuid.UUID) (*models.Task, error){
-    var task models.Task
-    stmt := `SELECT id, title, description, user_id, created_at, completed_at, updated_at, deleted_at FROM TASKS WHERE id = $1 AND deleted_at IS NULL`
-    err := t.db.QueryRow(context.Background(), stmt, id).Scan(&task.ID, &task.Title, &task.Description, &task.UserID, &task.CreatedAt, &task.CompletedAt, &task.UpdatedAt, &task.DeletedAt)
-    if err != nil {
-        return nil, err
-    }
-    return &task, nil
+func (t *TaskRepoImpl) ReadTaskByID(id uuid.UUID) (*models.Task, error) {
+	var task models.Task
+	stmt := `SELECT id, title, description, user_id, created_at, completed_at, updated_at, deleted_at FROM TASKS WHERE id = $1 AND deleted_at IS NULL`
+	err := t.db.QueryRow(context.Background(), stmt, id).Scan(&task.ID, &task.Title, &task.Description, &task.UserID, &task.CreatedAt, &task.CompletedAt, &task.UpdatedAt, &task.DeletedAt)
+	if err != nil {
+		return nil, err
+	}
+	return &task, nil
 }
 
 func (t *TaskRepoImpl) UpdateTask(task *models.Task) error {
-    stmt := `UPDATE TASKS SET title = $1, description = $2, completed_at = $3, updated_at = $4 WHERE id = $5 AND deleted_at IS NULL`
-    _, err := t.db.Exec(context.Background(), stmt, task.Title, task.Description, task.CompletedAt, time.Now(), task.ID)
-    if err != nil {
-        return err
-    }
-    return nil
+	stmt := `UPDATE TASKS SET title = $1, description = $2, completed_at = $3, updated_at = $4 WHERE id = $5 AND deleted_at IS NULL`
+	_, err := t.db.Exec(context.Background(), stmt, task.Title, task.Description, task.CompletedAt, time.Now(), task.ID)
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 func (t *TaskRepoImpl) DeleteTask(id uuid.UUID) error {
-    stmt := `UPDATE TASKS SET deleted_at = $1 WHERE id = $2 AND deleted_at IS NULL`
-    _, err := t.db.Exec(context.Background(), stmt, time.Now(), id)
-    if err != nil {
-        return err
-    }
-    return nil
+	stmt := `UPDATE TASKS SET deleted_at = $1 WHERE id = $2 AND deleted_at IS NULL`
+	_, err := t.db.Exec(context.Background(), stmt, time.Now(), id)
+	if err != nil {
+		return err
+	}
+	return nil
 }
-

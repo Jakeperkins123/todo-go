@@ -54,21 +54,21 @@ func (u *UserRepoImpl) ReadAllUsers() ([]models.User, error) {
 }
 
 func (u *UserRepoImpl) ReadUserByID(id uuid.UUID) (*models.User, error) {
-    ctx := context.Background()
-    stmt := `SELECT id, username, email, created_at, updated_at, deleted_at FROM USERS WHERE id = $1 AND deleted_at IS NULL`
-    var user models.User
-    err := u.db.QueryRow(ctx, stmt, id).Scan(&user.ID, &user.Username, &user.Email, &user.CreatedAt, &user.UpdatedAt, &user.DeletedAt)
-    return &user, err
+	ctx := context.Background()
+	stmt := `SELECT id, username, email, created_at, updated_at, deleted_at FROM USERS WHERE id = $1 AND deleted_at IS NULL`
+	var user models.User
+	err := u.db.QueryRow(ctx, stmt, id).Scan(&user.ID, &user.Username, &user.Email, &user.CreatedAt, &user.UpdatedAt, &user.DeletedAt)
+	return &user, err
 }
 
 func (u *UserRepoImpl) UpdateUser(user *models.User) error {
-    ctx := context.Background()
-    _, err := u.db.Exec(ctx, "UPDATE USERS SET username = $1, email = $2, updated_at = $3 WHERE id = $4", &user.Username, &user.Email, time.Now(), &user.ID)
-    return err
+	ctx := context.Background()
+	_, err := u.db.Exec(ctx, "UPDATE USERS SET username = $1, email = $2, updated_at = $3 WHERE id = $4", &user.Username, &user.Email, time.Now(), &user.ID)
+	return err
 }
 
 func (u *UserRepoImpl) DeleteUser(id uuid.UUID) error {
-    ctx := context.Background()
-    _, err := u.db.Exec(ctx, "UPDATE USERS SET deleted_at = $1 WHERE id = $2", time.Now(), id)
-    return err
+	ctx := context.Background()
+	_, err := u.db.Exec(ctx, "UPDATE USERS SET deleted_at = $1 WHERE id = $2", time.Now(), id)
+	return err
 }

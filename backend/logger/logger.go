@@ -7,5 +7,5 @@ func InitLogger() *zap.Logger {
 	if err != nil {
 		panic(err)
 	}
-    return log
+	return log
 }

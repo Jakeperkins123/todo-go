@@ -8,8 +8,8 @@ import (
 
 type TaskRepo interface {
 	CreateTask(*models.Task) error
-    ReadAllTasks() ([]models.Task, error)
-    ReadTaskByID(uuid.UUID) (*models.Task, error)
-    UpdateTask(*models.Task) error
-    DeleteTask(uuid.UUID) error
+	ReadAllTasks() ([]models.Task, error)
+	ReadTaskByID(uuid.UUID) (*models.Task, error)
+	UpdateTask(*models.Task) error
+	DeleteTask(uuid.UUID) error
 }

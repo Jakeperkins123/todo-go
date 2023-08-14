@@ -8,13 +8,12 @@ import (
 	"golang.org/x/net/context"
 )
 
-
 func InitDB(log *zap.Logger) *pgx.Conn {
-    log.Info("Connecting to database")
-    log.Info(os.Getenv("DATABASE_URL"))
-    database, err := pgx.Connect(context.Background(), os.Getenv("DATABASE_URL"))
-    if err != nil {
-        log.Fatal("Error connecting to database", zap.Error(err))
-    }
-    return database
+	log.Info("Connecting to database")
+	log.Info(os.Getenv("DATABASE_URL"))
+	database, err := pgx.Connect(context.Background(), os.Getenv("DATABASE_URL"))
+	if err != nil {
+		log.Fatal("Error connecting to database", zap.Error(err))
+	}
+	return database
 }
