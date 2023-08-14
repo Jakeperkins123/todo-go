@@ -1,17 +1,14 @@
 package main
 
 import (
-	"net/http"
-
-	"github.com/gin-gonic/gin"
+	"todo-go/database"
+	"todo-go/logger"
+	"todo-go/router"
 )
 
-func main(){
-  r := gin.Default()
-  r.GET("/ping", func(c *gin.Context) {
-    c.JSON(http.StatusOK, gin.H{
-      "message": "pong",
-    })
-  })
-  r.Run() 
+func main() {
+	log := logger.InitLogger()
+	defer log.Sync()
+	db := database.InitDB(log)
+	router.InitRouter(log, db)
 }
