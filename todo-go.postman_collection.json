@@ -1,0 +1,304 @@
+{
+	"info": {
+		"_postman_id": "bef53dbd-1888-4529-93bc-3dfede2d0c64",
+		"name": "todo-go",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4989579"
+	},
+	"item": [
+		{
+			"name": "Task",
+			"item": [
+				{
+					"name": "Create Task",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Do Laundry\",\n    \"description\": \"Do Laundry Every Friday\",\n    \"user_id\": \"1d960ab7-fbe4-4301-a4cd-2b8777f64317\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://todo-go-6rxr265wza-uc.a.run.app/tasks",
+							"protocol": "https",
+							"host": [
+								"todo-go-6rxr265wza-uc",
+								"a",
+								"run",
+								"app"
+							],
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read All Tasks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://todo-go-6rxr265wza-uc.a.run.app/tasks",
+							"protocol": "https",
+							"host": [
+								"todo-go-6rxr265wza-uc",
+								"a",
+								"run",
+								"app"
+							],
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Task By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://todo-go-6rxr265wza-uc.a.run.app/tasks/{{taskID}}",
+							"protocol": "https",
+							"host": [
+								"todo-go-6rxr265wza-uc",
+								"a",
+								"run",
+								"app"
+							],
+							"path": [
+								"tasks",
+								"{{taskID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Task",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Mow the yard\",\n    \"description\": \"Honeydo list\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://todo-go-6rxr265wza-uc.a.run.app/tasks/{{taskID}}",
+							"protocol": "https",
+							"host": [
+								"todo-go-6rxr265wza-uc",
+								"a",
+								"run",
+								"app"
+							],
+							"path": [
+								"tasks",
+								"{{taskID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Task",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://todo-go-6rxr265wza-uc.a.run.app/tasks/{{taskID}}",
+							"protocol": "https",
+							"host": [
+								"todo-go-6rxr265wza-uc",
+								"a",
+								"run",
+								"app"
+							],
+							"path": [
+								"tasks",
+								"{{taskID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"UserTwo\",\n    \"email\": \"2@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://todo-go-6rxr265wza-uc.a.run.app/users",
+							"protocol": "https",
+							"host": [
+								"todo-go-6rxr265wza-uc",
+								"a",
+								"run",
+								"app"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://todo-go-6rxr265wza-uc.a.run.app/users",
+							"protocol": "https",
+							"host": [
+								"todo-go-6rxr265wza-uc",
+								"a",
+								"run",
+								"app"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read User By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://todo-go-6rxr265wza-uc.a.run.app/users/{{userID}}",
+							"protocol": "https",
+							"host": [
+								"todo-go-6rxr265wza-uc",
+								"a",
+								"run",
+								"app"
+							],
+							"path": [
+								"users",
+								"{{userID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"User2\",\n    \"email\": \"user2@yahoo.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://todo-go-6rxr265wza-uc.a.run.app/users/{{userID}}",
+							"protocol": "https",
+							"host": [
+								"todo-go-6rxr265wza-uc",
+								"a",
+								"run",
+								"app"
+							],
+							"path": [
+								"users",
+								"{{userID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://todo-go-6rxr265wza-uc.a.run.app/users/{{userID}}",
+							"protocol": "https",
+							"host": [
+								"todo-go-6rxr265wza-uc",
+								"a",
+								"run",
+								"app"
+							],
+							"path": [
+								"users",
+								"{{userID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "userID",
+			"value": "1d960ab7-fbe4-4301-a4cd-2b8777f64317",
+			"type": "string"
+		},
+		{
+			"key": "taskID",
+			"value": "252592cb-4b7c-488b-be44-9aa97f88ce4f",
+			"type": "string"
+		}
+	]
+}
