@@ -4,6 +4,8 @@ A simple Todo application built with Go and hosted on Google Cloud Run.
 
 ## API Endpoints
 
+For your convenience, use the postman collection stored at the root of this project `todo-go.postman_collection.json`
+
 ### Task
 
 #### Create Task
